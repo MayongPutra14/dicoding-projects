@@ -6,7 +6,7 @@
   --color-white: #ffffff;
   --color-red-hover: hsl(0, 96%, 35%);
   --color-soft: hsl(0, 0%, 40%);
-  --color-dark:hsl(0, 0%, 29%);
+  --color-dark: hsl(0, 0%, 29%);
   /* spacing */
   --spacing-10: calc(1rem - 6px);
   --spacing-20: calc(1rem + 4px);
@@ -55,10 +55,15 @@ body {
   color: var(--color-white);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 section,
 aside,
 footer {
-  padding:0 min(6.25rem, 5%);
+  padding: 0 min(6.25rem, 5%);
 }
 
 h1,
@@ -103,7 +108,8 @@ h2::after {
   padding-top: var(--spacing-80);
 }
 
-.details p, .detail-promo p{
+.details p,
+.detail-promo p {
   line-height: 1.6;
   letter-spacing: 1px;
   margin-top: var(--spacing-20);

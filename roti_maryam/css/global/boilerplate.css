@@ -41,6 +41,8 @@ body {
   margin: 0;
   background-color: var(--color-amber-light-500);
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Logo Roti Maryam */

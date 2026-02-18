@@ -1,0 +1,93 @@
+/* * {
+  outline: 1px solid red;
+} */
+
+.my-profile {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-20);
+  margin-top: 5rem;
+  margin-inline: auto;
+  background-color: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 5px 5px 16px rgb(218, 218, 218);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.my-profile:hover {
+  box-shadow: 10px 10px 16px rgb(218, 218, 218);
+}
+
+.detail-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-inline: 2rem;
+}
+
+.detail-profile .profile-name {
+  font-size: clamp(1.25rem, 1.4rem + 0.325vw, 3rem);
+  font-weight: 600;
+}
+
+.saputra {
+  display: none;
+}
+
+.detail-profile .profile-role {
+  /* margin-block: 0.5rem; */
+  font-size: clamp(1rem, 1.2rem + 0.5vw, 2.2rem);
+}
+
+.detail-profile .profile-funfact {
+  text-align: center;
+  color: rgb(161, 161, 161);
+  font-size: clamp(0.8rem, 1rem + 0.2vw, 2rem);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.detail-profile .media-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  padding-block: 1rem;
+  width: clamp(1rem, 1.5rem + 3vw, 2rem);
+}
+
+.media-profile .media-icon {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.media-profile .media-icon:hover {
+  transform: translateY(-10px);
+}
+
+@media (min-width: 48rem) {
+  .my-profile {
+    width: 40%;
+    gap: 3rem;
+  }
+
+  .saputra {
+    display: inline-block;
+  }
+
+  .detail-promo p {
+    width: 90%;
+  }
+
+  .promo img {
+    width: 50%;
+    height: auto;
+  }
+}

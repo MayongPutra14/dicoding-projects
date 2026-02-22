@@ -1,0 +1,21 @@
+header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--size-16) var(--size-24);
+  box-shadow: var(--shadow-xs);
+}
+
+header h1 {
+  font-size: var(--fz-h4);
+  color: var(--color-blue);
+  font-weight: 500;
+}
+
+header img {
+  width: clamp(var(--size-40), 8vw, var(--size-56));
+  height: clamp(var(--size-40), 8vw, var(--size-56));
+  border-radius: 100%;
+}

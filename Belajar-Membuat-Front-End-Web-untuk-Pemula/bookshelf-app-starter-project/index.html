@@ -69,6 +69,7 @@
               type="text"
               required
               data-testid="bookFormTitleInput"
+              placeholder="Bumi Manusia"
             />
           </div>
           <div>
@@ -78,6 +79,7 @@
               type="text"
               required
               data-testid="bookFormAuthorInput"
+              placeholder="Pramoedya Ananta Toer"
             />
           </div>
           <div>
@@ -87,6 +89,7 @@
               type="number"
               required
               data-testid="bookFormYearInput"
+              placeholder="1980"
             />
           </div>
           <div class="checkbox-group">
@@ -107,70 +110,172 @@
         </form>
       </section>
 
-      <section>
-        <h2>Cari Buku</h2>
-        <form id="searchBook" data-testid="searchBookForm">
-          <label for="searchBookTitle">Judul</label>
-          <input
-            id="searchBookTitle"
-            type="text"
-            data-testid="searchBookFormTitleInput"
-          />
-          <button
-            id="searchSubmit"
-            type="submit"
-            data-testid="searchBookFormSubmitButton"
-          >
-            Cari
-          </button>
-        </form>
-      </section>
+      <!-- IN PROGRESS / IN COMPLETE -->
+      <section class="inprogress-container">
+        <h2>In Progress</h2>
 
-      <section>
-        <h2>Belum selesai dibaca</h2>
-
-        <div id="incompleteBookList" data-testid="incompleteBookList">
-          <!-- 
-            Ini adalah struktur HTML untuk masing-masing buku.
-            Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-          -->
-          <div data-bookid="123123123" data-testid="bookItem">
-            <h3 data-testid="bookItemTitle">Judul Buku 1</h3>
-            <p data-testid="bookItemAuthor">Penulis: Penulis Buku 1</p>
-            <p data-testid="bookItemYear">Tahun: 2030</p>
-            <div>
-              <button data-testid="bookItemIsCompleteButton">
-                Selesai dibaca
+        <div
+          id="incompleteBookList"
+          data-testid="incompleteBookList"
+          class="books-container"
+        >
+          <!-- Bumi Manusia -->
+          <div data-bookid="123123123" data-testid="bookItem" class="book-card">
+            <div class="book-info-wrapper">
+              <img
+                src="./assets/bumi-manusia-cover.svg"
+                alt="Cover"
+                class="book-cover"
+              />
+              <div class="book-detail-text">
+                <!-- indentity book -->
+                <div class="identity-book">
+                  <h3 data-testid="bookItemTitle">Bumi Manusia</h3>
+                  <p data-testid="bookItemAuthor">Pramoedya Ananta Toer</p>
+                  <p data-testid="bookItemYear">1980</p>
+                </div>
+                <!-- button complete -->
+                <button
+                  data-testid="bookItemIsCompleteButton"
+                  class="btn-complete"
+                >
+                  In Progress
+                </button>
+              </div>
+            </div>
+            <!-- button edit and delete -->
+            <div class="book-actions">
+              <button
+                data-testid="bookItemEditButton"
+                class="btn-icon"
+                title="Edit Buku"
+              >
+                <img src="./assets/edit-icn.svg" alt="Edit" />
               </button>
-              <button data-testid="bookItemDeleteButton">Hapus Buku</button>
-              <button data-testid="bookItemEditButton">Edit Buku</button>
+              <button
+                data-testid="bookItemDeleteButton"
+                class="btn-icon btn-danger"
+                title="Hapus Buku"
+              >
+                <img src="./assets/delete-icn.svg" alt="Delete" />
+              </button>
+            </div>
+          </div>
+
+          <!-- laskar pelangi -->
+          <div data-bookid="123123123" data-testid="bookItem" class="book-card">
+            <div class="book-info-wrapper">
+              <img
+                src="./assets/Laskar_pelangi_sampul.svg"
+                alt="Cover Book Laskar Pelangi"
+                class="book-cover"
+              />
+              <div class="book-detail-text">
+                <!-- indentity book -->
+                <div class="identity-book">
+                  <h3 data-testid="bookItemTitle">Laskar Pelangi</h3>
+                  <p data-testid="bookItemAuthor">Andrea Hirata</p>
+                  <p data-testid="bookItemYear">2005</p>
+                </div>
+                <!-- button complete -->
+                <button
+                  data-testid="bookItemIsCompleteButton"
+                  class="btn-complete"
+                >
+                  In Progress
+                </button>
+              </div>
+            </div>
+            <!--  button edit and delete -->
+            <div class="book-actions">
+              <button
+                data-testid="bookItemEditButton"
+                class="btn-icon"
+                title="Edit Book"
+              >
+                <img src="./assets/edit-icn.svg" alt="Edit" />
+              </button>
+              <button
+                data-testid="bookItemDeleteButton"
+                class="btn-icon btn-danger"
+                title="Hapus Book"
+              >
+                <img src="./assets/delete-icn.svg" alt="Delete" />
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <h2>Selesai dibaca</h2>
+      <!-- COMPLETE -->
+      <section class="complete-container">
+        <h2>Completed</h2>
 
-        <div id="completeBookList" data-testid="completeBookList">
-          <!-- 
-            Ini adalah struktur HTML untuk masing-masing buku.
-            Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
-          -->
-          <div data-bookid="456456456" data-testid="bookItem">
-            <h3 data-testid="bookItemTitle">Judul Buku 2</h3>
-            <p data-testid="bookItemAuthor">Penulis: Penulis Buku 2</p>
-            <p data-testid="bookItemYear">Tahun: 2030</p>
-            <div>
-              <button data-testid="bookItemIsCompleteButton">
-                Selesai dibaca
+        <div
+          id="completeBookList"
+          data-testid="completeBookList"
+          class="books-container"
+        >
+          <!-- laskar pelangi -->
+          <div data-bookid="456456456" data-testid="bookItem" class="book-card">
+            <div class="book-info-wrapper">
+              <img
+                src="./assets/Laskar_pelangi_sampul.svg"
+                alt="Cover Book Laskar Pelangi"
+                class="book-cover"
+              />
+              <div class="book-detail-text">
+                <!-- indentity book -->
+                <div class="identity-book">
+                  <h3 data-testid="bookItemTitle">Judul Buku 2</h3>
+                  <p data-testid="bookItemAuthor">Penulis: Penulis Buku 2</p>
+                  <p data-testid="bookItemYear">Tahun: 2030</p>
+                </div>
+                <!-- button complete -->
+                <button
+                  data-testid="bookItemIsCompleteButton"
+                  class="btn-complete"
+                >
+                  Complete
+                </button>
+              </div>
+            </div>
+
+            <div class="book-actions">
+              <button
+                data-testid="bookItemEditButton"
+                class="btn-icon btn-danger"
+                title="Edit Book"
+              >
+                <img src="./assets/edit-icn.svg" alt="Delete" />
               </button>
-              <button data-testid="bookItemDeleteButton">Hapus Buku</button>
-              <button data-testid="bookItemEditButton">Edit Buku</button>
+              <button
+                data-testid="bookItemDeleteButton"
+                class="btn-icon"
+                title="Delete Book"
+              >
+                <img src="./assets/delete-icn.svg" alt="Edit" />
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      <section class="quote-wrapper">
+        <figure class="quote-card">
+          <blockquote class="quote-text">
+            “Bermimpilah setinggi langit. Jika engkau jatuh, engkau akan jatuh
+            di antara bintang-bintang.”
+          </blockquote>
+
+          <figcaption class="quote-author">— Soekarno</figcaption>
+        </figure>
+      </section>
+      
     </main>
+
+    <footer class="site-footer">
+      <p class="footer-text">Created with love ❤️ by Gilang Mayong</p>
+    </footer>
   </body>
 </html>

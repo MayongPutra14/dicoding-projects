@@ -1,0 +1,13 @@
+.site-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--size-32);
+  padding: var(--size-32);
+  background-color: var(--bg-secondary);
+  text-align: center;
+}
+
+.footer-text {
+  font-size: var(--fz-base);
+  color: var(--slate-500);
+}

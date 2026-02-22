@@ -25,6 +25,12 @@ form {
   cursor: pointer;
 }
 
+.bookForm input[type="checkbox"]{
+  width: var(--size-24);
+  height: var(--size-24);
+  margin-left: var(--size-12);
+}
+
 .checkbox-group label {
     cursor: pointer;
 }

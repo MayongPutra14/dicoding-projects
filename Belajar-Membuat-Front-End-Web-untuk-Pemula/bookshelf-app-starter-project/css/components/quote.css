@@ -1,0 +1,27 @@
+.quote-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: var(--size-32);
+}
+
+.quote-card {
+  max-width: 42rem;
+  width: 100%;
+  background-color: #ffffff;
+  padding: var(--size-32);
+  border-radius: var(--size-16);
+  text-align: center;
+}
+
+.quote-text {
+  margin-bottom: var(--size-8);  
+  font-size: var(--fz-base);
+  line-height: var(--lg-relaxed);
+  color: var(--slate-500);
+}
+
+.quote-author {
+  font-size: var(--size-16);
+  font-weight: 600;
+  color: var(--slate-500);
+}

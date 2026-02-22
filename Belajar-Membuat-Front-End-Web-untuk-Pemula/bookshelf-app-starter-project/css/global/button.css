@@ -24,3 +24,13 @@
   transform: translateY(0px) scale(0.97);
   box-shadow: 0 2px 8px var(--blue-200);
 }
+
+.bookForm button {
+  margin-top: var(--size-12);
+}
+
+.book-card button {
+  padding: clamp(0.2rem, 0.4rem, 0.6rem)  clamp(0.4rem, 0.6rem, 0.8rem);
+  font-size: var(--fz-xs);
+  font-weight: var(--fw-semibold);
+}

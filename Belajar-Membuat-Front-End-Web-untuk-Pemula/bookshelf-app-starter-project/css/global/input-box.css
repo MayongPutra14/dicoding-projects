@@ -1,0 +1,31 @@
+input {
+  width: 100%;
+  padding: var(--size-8) var(--size-12);
+  border: 1px solid var(--slate-50);
+  border-radius: var(--size-12);
+  background-color: var(--bg-secondary);
+}
+
+input::placeholder {
+  color: var(--slate-500);
+  opacity: 1;
+}
+
+.search-input {
+  padding: var(--size-12) var(--size-12) var(--size-12) var(--size-36);
+  background-image: url("../../assets/search-icn.svg");
+  background-repeat: no-repeat;
+  background-position: var(--size-12) center; 
+  background-size: var(--size-16);
+}
+
+input[type="number"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+@media (min-width: 48rem) {
+ input.search-input {
+  width: 50%;
+ }   
+}

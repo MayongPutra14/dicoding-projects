@@ -1,0 +1,30 @@
+form {
+  margin-top: clamp(1rem, 0.8rem, 1.5rem);
+  padding: var(--size-24) var(--size-36);
+}
+
+.bookForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-12);
+  max-width: 30rem;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  border-radius: var(--size-16);
+}
+
+.bookForm input {
+  background-color: var(--bg-primary);
+}
+
+.bookForm .checkbox-group {
+  width: var(--size-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}

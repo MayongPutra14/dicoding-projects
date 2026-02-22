@@ -1,14 +1,14 @@
 :root {
-  /* Light Mode */
-  --bg-primary: #f9fafb;
+  --bg-primary: #edf2f7;
   --bg-secondary: #ffffff;
   --blue-500: #137fec;
   --blue-200: #99c8f7;
   --blue-hover: #60a9f3;
-  --text-secondary: #64748B;
+  --text-secondary: #64748b;
   --slate-50: #f8fafc;
   --slate-500: #64748b;
   --slate-900: #0f172a;
+
   /* Green Shades */
   --green-50: #f0fdf4;
   --green-100: #dcfce7;
@@ -87,7 +87,6 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-primary);
 }
 
 main {
@@ -96,6 +95,10 @@ main {
 
 section {
   padding: var(--size-16) var(--size-12);
+}
+
+section h2 {
+  font-size: var(--fz-h3);
 }
 
 h1,
@@ -137,9 +140,17 @@ button {
 input,
 label {
   display: block;
+  font-family: var(--font-poppin);
 }
 
-@media (min-width: 48rem) {
+label {
+    color: var(--slate-900);
+    font-size: var(--fz-base);
+    margin-bottom: var(--size-12);
+}
+
+
+@media (min-width: 48rem) {  
   section {
     padding: var(--size-24) var(--size-16);
   }

@@ -1,5 +1,5 @@
-import { books, saveBooks } from "./basic-config";
-import { renderBooks } from "./render-books";
+import { books, saveBooks } from "./basic-config.js";
+import { renderBooks } from "./render-books.js";
 
 const formElement = document.getElementById("bookForm");
 

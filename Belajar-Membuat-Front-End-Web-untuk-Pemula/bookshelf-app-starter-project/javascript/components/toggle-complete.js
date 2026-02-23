@@ -1,14 +1,12 @@
-import { books, saveBooks } from "./basic-config";
-import { renderBooks } from "./render-books";
+import { books, saveBooks } from "./basic-config.js";
+import { renderBooks } from "./render-books.js";
 
 const inProgressShelfList = document.getElementById("incompleteBookList");
 const completeShelfList = document.getElementById("completeBookList");
 
 // FIND BOOK BY ID
 function findBookId(bookId) {
-  return books.find((item) => {
-    String(item.id) === String(bookId);
-  });
+  return books.find((item) => String(item.id) === String(bookId));
 }
 
 // CHANGE STATUS WHEN TOOGLE CLICKED
@@ -18,7 +16,7 @@ function changeBookStatus(book) {
 
 // GET BOOK ID
 function getBookId(data) {
-  const card = data.closest(["data-bookid"]);
+  const card = data.closest("[data-bookid]");
   if (!card) {
     return;
   }
@@ -42,6 +40,8 @@ function toggleBookStatus(event) {
   }
 
   const targetBook = findBookId(bookId);
+
+  console.log(bookId, targetBook);
   if (!targetBook) {
     return;
   }

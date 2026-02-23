@@ -26,7 +26,7 @@
             collection
           </p>
         </div>
-        <button class="btn-add-new-book" data-tab-target="#bookForm">+ Add New Book</button>
+        <button class="btn-add-new-book">+ Add New Book</button>
       </section>
 
       <!-- ADD NEW BOOK -->
@@ -50,7 +50,6 @@
             </button>
           </div>
 
-
           <!-- LOCAL NAVIGATION -->
           <nav>
             <ul>
@@ -62,54 +61,55 @@
         </div>
 
         <!-- FORM ADD NEW BOOK -->
-        <form id="bookForm" class="bookForm" data-testid="bookForm" data-tab-content>
-          <h2>Add New Book</h2>
-          <div>
-            <label for="bookFormTitle">Book Tittle</label>
-            <input
-              id="bookFormTitle"
-              type="text"
-              required
-              data-testid="bookFormTitleInput"
-              placeholder="Bumi Manusia"
-            />
-          </div>
-          <div>
-            <label for="bookFormAuthor">Author</label>
-            <input
-              id="bookFormAuthor"
-              type="text"
-              required
-              data-testid="bookFormAuthorInput"
-              placeholder="Pramoedya Ananta Toer"
-            />
-          </div>
-          <div>
-            <label for="bookFormYear">Year</label>
-            <input
-              id="bookFormYear"
-              type="number"
-              required
-              data-testid="bookFormYearInput"
-              placeholder="1980"
-            />
-          </div>
-          <div class="checkbox-group">
-            <label for="bookFormIsComplete">Complete</label>
-            <input
-              id="bookFormIsComplete"
-              type="checkbox"
-              data-testid="bookFormIsCompleteCheckbox"
-            />
-          </div>
-          <button
-            id="bookFormSubmit"
-            type="submit"
-            data-testid="bookFormSubmitButton"
-          >
-            Add Book
-          </button>
-        </form>
+          <form id="bookForm" class="bookForm open" data-testid="bookForm">
+            <img class="btn-close" src="./assets/close-x.svg" alt="Close">
+            <h2>Add New Book</h2>
+            <div>
+              <label for="bookFormTitle">Book Tittle</label>
+              <input
+                id="bookFormTitle"
+                type="text"
+                required
+                data-testid="bookFormTitleInput"
+                placeholder="Bumi Manusia"
+              />
+            </div>
+            <div>
+              <label for="bookFormAuthor">Author</label>
+              <input
+                id="bookFormAuthor"
+                type="text"
+                required
+                data-testid="bookFormAuthorInput"
+                placeholder="Pramoedya Ananta Toer"
+              />
+            </div>
+            <div>
+              <label for="bookFormYear">Year</label>
+              <input
+                id="bookFormYear"
+                type="number"
+                required
+                data-testid="bookFormYearInput"
+                placeholder="1980"
+              />
+            </div>
+            <div class="checkbox-group">
+              <label for="bookFormIsComplete">Complete</label>
+              <input
+                id="bookFormIsComplete"
+                type="checkbox"
+                data-testid="bookFormIsCompleteCheckbox"
+              />
+            </div>
+            <button
+              id="bookFormSubmit"
+              type="submit"
+              data-testid="bookFormSubmitButton"
+            >
+              Add Book
+            </button>
+          </form>
       </section>
 
       <!-- IN PROGRESS / INCOMPLETE -->
@@ -274,7 +274,6 @@
           <figcaption class="quote-author">— Soekarno</figcaption>
         </figure>
       </section>
-      
     </main>
 
     <footer class="site-footer">

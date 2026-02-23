@@ -40,3 +40,20 @@ function menuSelected(event) {
 menuList.forEach((menu) => {
   menu.addEventListener("click", menuSelected);
 });
+
+
+// CLOSE BUTTON ON FORM ADD NEW BOOK
+const btnAddNewBook = document.querySelector(".btn-add-new-book")
+const closeButton = document.querySelector(".btn-close")
+const formAddNewBook = document.getElementById("bookForm")
+
+btnAddNewBook.addEventListener('click', () => {
+  formAddNewBook.classList.add("open")
+})
+
+
+
+closeButton.addEventListener('click', () => {
+  formAddNewBook.classList.remove("open")
+})
+

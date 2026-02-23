@@ -25,6 +25,10 @@
   box-shadow: 0 2px 8px var(--blue-200);
 }
 
+#bookFormSubmit{
+  width: 100%;
+}
+
 .bookForm button {
   margin-top: var(--size-12);
 }

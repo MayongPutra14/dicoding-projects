@@ -19,7 +19,7 @@ function renderInProgressBooks() {
 
     bookCard.innerHTML = `
                 <div class="book-info-wrapper">
-                    <img src="./assets/bumi-manusia-cover.webp" alt="Cover" class="book-cover" />
+                    <img src="./assets/Cover-book-template.webp" alt="Cover" class="book-cover" />
                     <div class="book-detail-text">
                         <div class="identity-book">
                             <h3 data-testid="bookItemTitle">${book.title}</h3>

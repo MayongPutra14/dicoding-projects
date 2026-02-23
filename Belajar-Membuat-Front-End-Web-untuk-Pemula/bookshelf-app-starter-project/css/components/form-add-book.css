@@ -4,13 +4,32 @@ form {
 }
 
 .bookForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: var(--size-12);
   max-width: 30rem;
+  width: 80%;
   margin: 0 auto;
   background-color: var(--bg-secondary);
   border-radius: var(--size-16);
+  display: none;
+}
+
+.bookForm.open {
+  display: block;
+}
+
+.btn-close {
+  position: absolute;
+  top: var(--size-16);
+  right:var(--size-8) ;
+  width: clamp(var(--size-40), 8vw, var(--size-56));
+  height: clamp(var(--size-40), 8vw, var(--size-56));
+  cursor: pointer;
 }
 
 .bookForm input {

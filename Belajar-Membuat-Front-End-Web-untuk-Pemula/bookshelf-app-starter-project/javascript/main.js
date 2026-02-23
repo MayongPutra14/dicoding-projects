@@ -1,2 +1,2 @@
-// Do your work here...
-console.log('Hello, world!');
+import './components/navigation.js'
+import './components/basic-config.js'

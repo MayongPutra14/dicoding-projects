@@ -26,7 +26,7 @@
             collection
           </p>
         </div>
-        <button class="btn-add-new-book">+ Add New Book</button>
+        <button class="btn-add-new-book" data-tab-target="#bookForm">+ Add New Book</button>
       </section>
 
       <!-- ADD NEW BOOK -->
@@ -49,18 +49,20 @@
               Search
             </button>
           </div>
+
+
           <!-- LOCAL NAVIGATION -->
           <nav>
             <ul>
-              <li class="active">All Books</li>
-              <li>Reading</li>
-              <li>Completed</li>
+              <li data-tab-target="" class="selected">All Books</li>
+              <li data-tab-target="#inComplete">Reading</li>
+              <li data-tab-target="#completed">Completed</li>
             </ul>
           </nav>
         </div>
 
         <!-- FORM ADD NEW BOOK -->
-        <form id="bookForm" class="bookForm" data-testid="bookForm">
+        <form id="bookForm" class="bookForm" data-testid="bookForm" data-tab-content>
           <h2>Add New Book</h2>
           <div>
             <label for="bookFormTitle">Book Tittle</label>
@@ -110,8 +112,8 @@
         </form>
       </section>
 
-      <!-- IN PROGRESS / IN COMPLETE -->
-      <section class="inprogress-container">
+      <!-- IN PROGRESS / INCOMPLETE -->
+      <section id="inComplete" class="inprogress-container" data-tab-content>
         <h2>In Progress</h2>
 
         <div
@@ -208,7 +210,7 @@
       </section>
 
       <!-- COMPLETE -->
-      <section class="complete-container">
+      <section id="completed" class="complete-container" data-tab-content>
         <h2>Completed</h2>
 
         <div
@@ -261,6 +263,7 @@
         </div>
       </section>
 
+      <!-- QUOTE -->
       <section class="quote-wrapper">
         <figure class="quote-card">
           <blockquote class="quote-text">

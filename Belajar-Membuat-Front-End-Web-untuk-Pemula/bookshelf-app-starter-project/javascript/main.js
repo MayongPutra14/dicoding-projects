@@ -1,10 +1,8 @@
+console.log("Main.js Berjalan");
 import "./components/navigation.js";
-import "./components/basic-config.js";
-import { renderBooks } from "./components/render-books.js";
-import "./components/create-books.js";
-import "./components/toggle-complete.js";
-import "./components/delete-books.js";
+import "./components/create-book.js";
+import { renderInProgressBooks } from "./components/render-book.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderBooks();
+  renderInProgressBooks();
 });

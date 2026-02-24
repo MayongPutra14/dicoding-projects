@@ -37,7 +37,7 @@ function renderCategoryBooks() {
                     <button data-testid="bookItemEditButton" class="btn-icon">
                         <img src="./assets/edit-icn.svg" alt="Edit" />
                     </button>
-                    <button data-testid="bookItemDeleteButton" class="btn-icon btn-danger">
+                    <button data-testid="bookItemDeleteButton" class="btn-icon btn-delete">
                         <img src="./assets/delete-icn.svg" alt="Delete" />
                     </button>
                 </div>

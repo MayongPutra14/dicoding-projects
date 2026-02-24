@@ -5,7 +5,7 @@ import {
   totalBooks,
 } from "./components/render-book.js";
 import './components/update-book.js'
-
+import "./components/delete-book.js"
 document.addEventListener("DOMContentLoaded", () => {
   renderCategoryBooks();
   totalBooks();

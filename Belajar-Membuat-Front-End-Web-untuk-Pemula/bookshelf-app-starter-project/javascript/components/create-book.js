@@ -1,3 +1,4 @@
+import { totalBooks } from "./render-book.js";
 const bookForm = document.getElementById("bookForm");
 
 bookForm.addEventListener("submit", function (event) {
@@ -25,7 +26,7 @@ bookForm.addEventListener("submit", function (event) {
   }
 
   booksArray.push(newBook);
-
+  totalBooks()
   localStorage.setItem("books", JSON.stringify(booksArray));
   console.log(JSON.parse(localStorage.getItem("books")));
   bookForm.reset();

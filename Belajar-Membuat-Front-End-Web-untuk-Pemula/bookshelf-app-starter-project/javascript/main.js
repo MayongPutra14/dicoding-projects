@@ -1,19 +1,19 @@
-console.log("Main.js Berjalan");
 import "./components/navigation.js";
 import "./components/create-book.js";
 import {
-  renderAllBooks,
-  renderInProgressBooks,
+  renderCategoryBooks,
+  totalBooks,
 } from "./components/render-book.js";
+import './components/update-book.js'
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderInProgressBooks();
-  renderAllBooks();
+  renderCategoryBooks();
+  totalBooks();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   const defaultTab = document.querySelector(".selected[data-tab-target]");
   if (defaultTab) {
-    defaultTab.click(); // Memicu event click secara otomatis
+    defaultTab.click();
   }
 });

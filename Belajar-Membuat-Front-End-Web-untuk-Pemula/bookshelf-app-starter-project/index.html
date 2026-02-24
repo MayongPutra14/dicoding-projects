@@ -34,20 +34,22 @@
         <!-- SEARCH BAR AND FILTER NAVIGATION -->
         <div class="search-filter">
           <div class="search-container">
-            <input
-              id="searchBookTitle"
-              class="search-input"
-              type="text"
-              data-testid="searchBookFormTitleInput"
-              placeholder="Search your books..."
-            />
-            <button
-              id="searchSubmit"
-              type="submit"
-              data-testid="searchBookFormSubmitButton"
-            >
-              Search
-            </button>
+            <form id="searchBook" data-testid="searchBookForm">
+              <input
+                id="searchBookTitle"
+                class="search-input"
+                type="text"
+                data-testid="searchBookFormTitleInput"
+                placeholder="Search your books..."
+              />
+              <button
+                id="searchSubmit"
+                type="submit"
+                data-testid="searchBookFormSubmitButton"
+              >
+                Search
+              </button>
+            </form>
           </div>
 
           <!-- LOCAL NAVIGATION -->

@@ -1,4 +1,4 @@
-form {
+.form-add-book .bookForm {
   margin-top: clamp(1rem, 0.8rem, 1.5rem);
   padding: var(--size-24) var(--size-36);
 }

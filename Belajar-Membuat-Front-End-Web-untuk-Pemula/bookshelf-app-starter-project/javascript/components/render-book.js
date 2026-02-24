@@ -1,5 +1,5 @@
 // RENDER THE CARDS TO EACH CATEGORY
-function renderCategoryBooks() {
+function renderCategoryBooks(booksData) {
   const containerInProgressBook = document.getElementById("incompleteBookList");
   const containerCompleteBook = document.getElementById("completeBookList");
   const allBookContainer = document.getElementById("all-book-container");
@@ -8,10 +8,14 @@ function renderCategoryBooks() {
   containerInProgressBook.innerHTML = "";
   containerCompleteBook.innerHTML = "";
 
-  const storedBooks = localStorage.getItem("books");
-  if (!storedBooks) return;
+  let books = booksData;
+  if(!books) {
+    const storedBooks = localStorage.getItem("books");
+    if (!storedBooks) return;
 
-  const books = JSON.parse(storedBooks);
+    books = JSON.parse(storedBooks);
+  }
+
 
   books.forEach((book) => {
     const bookCard = document.createElement("div");

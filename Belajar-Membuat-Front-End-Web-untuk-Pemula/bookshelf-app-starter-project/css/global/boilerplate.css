@@ -144,13 +144,12 @@ label {
 }
 
 label {
-    color: var(--slate-900);
-    font-size: var(--fz-base);
-    margin-bottom: var(--size-8);
+  color: var(--slate-900);
+  font-size: var(--fz-base);
+  margin-bottom: var(--size-8);
 }
 
-
-@media (min-width: 48rem) {  
+@media (min-width: 48rem) {
   section {
     padding: var(--size-24) var(--size-16);
   }

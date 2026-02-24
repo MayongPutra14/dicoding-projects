@@ -14,7 +14,7 @@
 }
 
 .quote-text {
-  margin-bottom: var(--size-8);  
+  margin-bottom: var(--size-8);
   font-size: var(--fz-base);
   line-height: var(--lg-relaxed);
   color: var(--slate-500);

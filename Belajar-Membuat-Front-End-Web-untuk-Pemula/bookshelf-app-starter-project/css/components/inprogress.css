@@ -1,7 +1,3 @@
-/* .inprogress-container {
-    display: flex;
-} */
-
 .books-container {
     margin-top: clamp(1rem, 1.2rem + 1vw, 1.5rem);
     display: flex;

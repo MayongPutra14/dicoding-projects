@@ -17,16 +17,29 @@ form {
   background-color: var(--bg-secondary);
   border-radius: var(--size-16);
   display: none;
+  z-index: 999;
 }
 
-.bookForm.open {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: none;
+  z-index: 998;
+}
+
+.open {
   display: block;
 }
 
 .btn-close {
   position: absolute;
   top: var(--size-16);
-  right:var(--size-8) ;
+  right: var(--size-8);
   width: clamp(var(--size-40), 8vw, var(--size-56));
   height: clamp(var(--size-40), 8vw, var(--size-56));
   cursor: pointer;
@@ -44,12 +57,12 @@ form {
   cursor: pointer;
 }
 
-.bookForm input[type="checkbox"]{
+.bookForm input[type="checkbox"] {
   width: var(--size-24);
   height: var(--size-24);
   margin-left: var(--size-12);
 }
 
 .checkbox-group label {
-    cursor: pointer;
+  cursor: pointer;
 }

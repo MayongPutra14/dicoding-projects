@@ -1,4 +1,4 @@
- button {
+button {
   letter-spacing: var(--lh-tight);
   white-space: nowrap;
   font-size: var(--fz-base);
@@ -14,18 +14,18 @@
   user-select: none;
 }
 
- button:hover {
+button:hover {
   background: var(--blue-hover);
   box-shadow: 6px 6px 22px var(--blue-200);
   transform: translateY(-2px);
 }
 
- button:active {
+button:active {
   transform: translateY(0px) scale(0.97);
   box-shadow: 0 2px 8px var(--blue-200);
 }
 
-#bookFormSubmit{
+#bookFormSubmit {
   width: 100%;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .book-card button {
-  padding: clamp(0.2rem, 0.4rem, 0.6rem)  clamp(0.4rem, 0.6rem, 0.8rem);
+  padding: clamp(0.2rem, 0.4rem, 0.6rem) clamp(0.4rem, 0.6rem, 0.8rem);
   font-size: var(--fz-xs);
   font-weight: var(--fw-semibold);
 }

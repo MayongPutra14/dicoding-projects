@@ -1,6 +1,6 @@
 const bookForm = document.getElementById("bookForm");
 
-bookForm.addEventListener("submit", function(event) {
+bookForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const title = document.getElementById("bookFormTitle").value;

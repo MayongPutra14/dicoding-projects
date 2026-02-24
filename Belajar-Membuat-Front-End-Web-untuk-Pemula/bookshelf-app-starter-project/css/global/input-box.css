@@ -15,7 +15,7 @@ input::placeholder {
   padding: var(--size-12) var(--size-12) var(--size-12) var(--size-36);
   background-image: url("../../assets/search-icn.svg");
   background-repeat: no-repeat;
-  background-position: var(--size-12) center; 
+  background-position: var(--size-12) center;
   background-size: var(--size-16);
 }
 
@@ -25,7 +25,7 @@ input[type="number"] {
 }
 
 @media (min-width: 48rem) {
- input.search-input {
-  width: 50%;
- }   
+  input.search-input {
+    width: 50%;
+  }
 }

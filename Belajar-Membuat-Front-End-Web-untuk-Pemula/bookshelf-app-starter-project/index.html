@@ -53,7 +53,7 @@
           <!-- LOCAL NAVIGATION -->
           <nav>
             <ul>
-              <li data-tab-target="" class="selected">All Books</li>
+              <li data-tab-target="#all-book" class="selected">All Books</li>
               <li data-tab-target="#inComplete">Reading</li>
               <li data-tab-target="#completed">Completed</li>
             </ul>
@@ -61,8 +61,9 @@
         </div>
 
         <!-- FORM ADD NEW BOOK -->
+        <div class="overlay">
           <form id="bookForm" class="bookForm open" data-testid="bookForm">
-            <img class="btn-close" src="./assets/close-x.svg" alt="Close">
+            <img class="btn-close" src="./assets/close-x.svg" alt="Close" />
             <h2>Add New Book</h2>
             <div>
               <label for="bookFormTitle">Book Tittle</label>
@@ -110,6 +111,13 @@
               Add Book
             </button>
           </form>
+        </div>
+      </section>
+
+      <!-- ALL BOOKS -->
+      <section id="all-book" class="all-book" data-tab-content>
+        <h2>All Books</h2>
+        <div id="all-book-container" class="books-container"></div>
       </section>
 
       <!-- IN PROGRESS / INCOMPLETE -->

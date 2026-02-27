@@ -1,12 +1,14 @@
 import React from "react";
 import ContactItemBody from "./ContactItemBody";
 import ContactItemImage from "./ContactItemImage";
+import DeleteButton from "./DeleteButton";
 
-function ContactItem({ imageUrl, name, tag }) {
+function ContactItem({ imageUrl, name, tag, id, onDelete }) {
     return (
         <div className="contact-item">
             <ContactItemImage imageUrl={imageUrl}></ContactItemImage>
             <ContactItemBody name={name} tag={tag}></ContactItemBody>
+            <DeleteButton id={id} onDelete={onDelete}/>
         </div>
     )
 }

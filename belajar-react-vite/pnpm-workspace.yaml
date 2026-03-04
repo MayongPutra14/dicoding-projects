@@ -1,2 +1,4 @@
 packages:
   - 'materi-*'  # Semua folder yang berawalan 'materi-' akan berbagi library
+  - 'expreriment-*'
+  - 'experiment-*'

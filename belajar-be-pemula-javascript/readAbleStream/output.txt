@@ -1,0 +1,2 @@
+mencoba untuk menimpa Tulisan sebelumnya 
+Method end() digunakan untuk menandakan akhir dari writable stream sekaligus bisa digunakan sebagai penulisan writeable terakhir.

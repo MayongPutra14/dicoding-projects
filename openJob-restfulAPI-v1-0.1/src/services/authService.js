@@ -1,24 +1,24 @@
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import jwt, { decode } from "jsonwebtoken";
+import { getUserByEmail } from "./repositories/userRepositories.js";
+import { nanoid } from "nanoid";
 
 export const loginUser = async ({ email, password }) => {
-  const query = {
-    text: "SELECT * FROM users WHERE email = $1",
-    values: [email],
-  };
-
-  const result = await pool.query(query);
-  const user = result.rows[0];
+  const user = await getUserByEmail(email);
 
   if (!user) {
-    throw new Error("Invalid Credentials");
+    const error = new Error("Invalid Credentials");
+    error.status = 401;
+    throw error;
   }
 
   const isValid = await bcrypt.compare(password, user.password);
 
   if (!isValid) {
-    throw new Error("Invalid Credentials");
+    const error = new Error("Invalid Credentials");
+    error.status = 401;
+    throw error;
   }
 
   const payload = { id: user.id };
@@ -34,9 +34,10 @@ export const loginUser = async ({ email, password }) => {
 };
 
 export const saveRefreshToken = async (token) => {
+  const id = nanoid(16);
   const query = {
-    text: "INSERT INTO authentications (refresh_token) VALUES ($1)",
-    values: [token],
+    text: "INSERT INTO authentications (id, token) VALUES ($1, $2)",
+    values: [id, token],
   };
 
   await pool.query(query);
@@ -44,7 +45,7 @@ export const saveRefreshToken = async (token) => {
 
 export const refreshAccessToken = async (refreshToken) => {
   const query = {
-    text: "SELECT refresh_token FROM authentications WHERE refresh_token = $1",
+    text: "SELECT token FROM authentications WHERE refresh_token = $1",
     values: [refreshToken],
   };
 
@@ -70,7 +71,7 @@ export const refreshAccessToken = async (refreshToken) => {
 
 export const deleteRefreshToken = async (token) => {
   const query = {
-    text: "DELETE FROM authentications WHERE refresh_token = $1",
+    text: "DELETE FROM authentications WHERE token = $1",
     values: [token],
   };
 

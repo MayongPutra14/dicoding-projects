@@ -1,7 +1,7 @@
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import { nanoid } from "nanoid";
-import { getAllUsers, getUserById } from "./userRepositories.js";
+import { getAllUsers, getUserById } from "./repositories/userRepositories.js";
 
 export const createUser = async ({ name, email, password, role }) => {
   const id = nanoid(16);

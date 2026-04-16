@@ -1,13 +1,16 @@
-import { loginUser } from "../services/authService";
+import { loginUser } from "../services/authService.js";
 export const login = async (req, res, next) => {
-    try {
-        const tokens = await loginUser(req.body)
+  try {
+    const tokens = await loginUser(req.body);
 
-        res.json({
-            status: 'success',
-            data: tokens
-        })
-    } catch (error) {
-        next(error)
-    }
-}
+    res.status(200).json({
+      status: "success",
+      data: {
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};

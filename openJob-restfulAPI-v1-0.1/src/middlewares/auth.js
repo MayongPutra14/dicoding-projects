@@ -1,27 +1,27 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const authenticate = (req, res, next) => {
-    const authHeader = req.headers.authorizarion
+  const authHeader = req.headers.authorization;
 
-    if(!authHeader){
-        return res.status(401).json({
-            status: 'failed',
-            message: 'Unauthorized'
-        })
-    }
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({
+      status: "failed",
+      message: "Unauthorized",
+    });
+  }
 
-    const token = authHeader.split(" ")[1]
+  const token = authHeader.split(" ")[1];
 
-    try {
-        const decode = jwt.verify(token, process.env.ACCESS_TOKEN_KEY)
-        req.user = decode
-        next()
-    } catch (error) {
-        res.status(401).json({
-            status: "failed"
-,            message: 'Invalid token'
-        })        
-    }
-}
+  try {
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_KEY);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({
+      status: "failed",
+      message: "Unauthorized",
+    });
+  }
+};
 
-export default authenticate
+export default authenticate;

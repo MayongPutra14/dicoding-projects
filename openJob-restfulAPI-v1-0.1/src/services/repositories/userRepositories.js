@@ -1,5 +1,4 @@
-import pool from "../config/database.js";
-
+import pool from "../../config/database.js";
 
 export const getAllUsers = async (pool) => {
   const query = {
@@ -14,6 +13,16 @@ export const getUserById = async (id) => {
   const query = {
     text: `SELECT id, name, email, role, created_at, updated_at FROM users WHERE id = $1`,
     values: [id],
+  };
+
+  const result = await pool.query(query);
+  return result.rows[0];
+};
+
+export const getUserByEmail = async (email) => {
+  const query = {
+    text: "SELECT * FROM users  WHERE email = $1",
+    values: [email],
   };
 
   const result = await pool.query(query);

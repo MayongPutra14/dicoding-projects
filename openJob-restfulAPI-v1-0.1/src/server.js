@@ -5,6 +5,7 @@ import errorHandler from "./middlewares/errorHandler.js";
 import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import companyRoutes from "./routes/companyRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js "
 // const PORT = process.env.PORT || 3000;
 const PORT = 3000;
 const HOST = process.env.HOST;
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
 app.use(companyRoutes);
+app.use(categoryRoutes)
 app.use(errorHandler);
 
 app.get("/test-db", async (req, res) => {

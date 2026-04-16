@@ -8,6 +8,12 @@ import {
 import { nanoid } from "nanoid";
 
 export const handleCreateCompany = async (payload, userId) => {
+  if (!payload) {
+    const error = new Error("Payload is required");
+    error.status = 400;
+    throw error;
+  }
+
   const id = nanoid(16);
   return await addCompany({
     id,
@@ -33,6 +39,12 @@ export const handleGetCompanyById = async (id) => {
 };
 
 export const handleUpdateCompany = async (id, payload) => {
+  if (!payload) {
+    const error = new Error("Payload is required");
+    error.status = 400;
+    throw error;
+  }
+
   const updated = await updateCompanyById(id, payload);
 
   if (!updated) {

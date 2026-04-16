@@ -37,7 +37,7 @@ export const getCompanyById = async (req, res, next) => {
   try {
     const data = await handleGetCompanyById(req.params.id);
 
-    res.json({
+    res.status(200).json({
       status: "success",
       data,
     });
@@ -49,10 +49,8 @@ export const getCompanyById = async (req, res, next) => {
 export const updateCompany = async (req, res, next) => {
   try {
     const data = await handleUpdateCompany(req.params.id, req.body);
-    console.log("BODY:", req.body);
-    console.log("RESULT:", data);
 
-    res.json({
+    res.status(200).json({
       status: "success",
       message: "Data Updated Successfully",
       data,
@@ -66,7 +64,7 @@ export const deleteCompany = async (req, res, next) => {
   try {
     await handleDeleteCompany(req.params.id);
 
-    res.json({
+    res.status(200).json({
       status: "success",
       message: "Company deleted",
     });

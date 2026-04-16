@@ -1,6 +1,6 @@
 import express from "express";
 import validate from "../middlewares/validate.js";
-import authMiddleware from "../middlewares/auth.js";
+import authenticate from "../middlewares/auth.js";
 import { createCompanySchema } from "../validations/companyValidation.js";
 import {
   createCompany,
@@ -13,13 +13,13 @@ const router = express.Router();
 
 router.post(
   "/companies",
-  authMiddleware,
+  authenticate,
   validate(createCompanySchema),
   createCompany,
 );
 
-router.put("/companies/:id", authMiddleware, updateCompany);
-router.delete("/companies/:id", authMiddleware, deleteCompany);
+router.put("/companies/:id", authenticate, updateCompany);
+router.delete("/companies/:id", authenticate, deleteCompany);
 
 router.get("/companies", getCompanies);
 router.get("/companies/:id", getCompanyById);

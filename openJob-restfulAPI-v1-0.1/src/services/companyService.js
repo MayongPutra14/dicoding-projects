@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import {
   addCompany,
   getAllCompanies,
@@ -5,7 +6,6 @@ import {
   updateCompanyById,
   deleteCompanyById,
 } from "./repositories/companyRepositories.js";
-import { nanoid } from "nanoid";
 
 export const handleCreateCompany = async (payload, userId) => {
   if (!payload) {

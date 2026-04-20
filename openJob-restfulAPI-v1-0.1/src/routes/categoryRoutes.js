@@ -1,5 +1,7 @@
 import express from "express";
 import authenticate from "../middlewares/auth.js";
+import validate from "../middlewares/validate.js";
+import { createCategorySchema } from "../validations/categoryValidation.js";
 import {
   createCategory,
   getCategories,
@@ -7,8 +9,6 @@ import {
   updateCategory,
   deleteCategory,
 } from "../controllers/categoryController.js";
-import validate from "../middlewares/validate.js";
-import { createCategorySchema } from "../validations/categoryValidation.js";
 
 const router = express.Router();
 

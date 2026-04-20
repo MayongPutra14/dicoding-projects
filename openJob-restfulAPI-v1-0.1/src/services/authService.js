@@ -1,8 +1,8 @@
+import { nanoid } from "nanoid";
 import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import jwt, { decode } from "jsonwebtoken";
 import { getUserByEmail } from "./repositories/userRepositories.js";
-import { nanoid } from "nanoid";
 
 export const loginUser = async ({ email, password }) => {
   const user = await getUserByEmail(email);

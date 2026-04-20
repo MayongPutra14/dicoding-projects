@@ -17,7 +17,7 @@ export const up = (pgm) => {
     name: {
       type: "TEXT",
       notNull: true,
-      default: 'Unknown'
+      default: "Unknown",
     },
     created_at: {
       type: "TIMESTAMP",
@@ -38,5 +38,5 @@ export const up = (pgm) => {
  * @returns {Promise<void> | void}
  */
 export const down = (pgm) => {
-    pgm.dropTable('categories')
+  pgm.dropTable("categories");
 };

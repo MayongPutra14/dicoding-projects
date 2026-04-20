@@ -8,6 +8,12 @@ import {
 import { nanoid } from "nanoid";
 
 export const handleCreateCategory = async (payload) => {
+  if (!payload) {
+    const error = new Error("Payload is required");
+    error.status = 400;
+    throw error;
+  }
+
   const { name } = payload;
 
   if (!name) {

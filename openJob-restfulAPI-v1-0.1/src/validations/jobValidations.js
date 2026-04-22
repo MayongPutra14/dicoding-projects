@@ -14,10 +14,10 @@ export const jobSchema = Joi.object({
     .valid("full-time", "part-time", "contract", "internship")
     .required(),
   experience_level: Joi.string()
-    .valid("junior", "mid-level", "senior", "expert")
+    .valid("junior", "mid", "senior", "expert")
     .required(),
-  location_type: Joi.string().valid("remote", "on-site", "hybrid").required(),
-  location_city: Joi.string().allow("", null),
+  location_type: Joi.string().valid("remote", "onsite", "hybrid").required(),
+  location_city: Joi.string().default("Unknown"),
 
   // Gaji
   salary_min: Joi.number().integer().min(0).allow(null),

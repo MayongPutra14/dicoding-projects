@@ -9,18 +9,20 @@ export const shorthands = undefined;
  * @returns {Promise<void> | void}
  */
 export const up = (pgm) => {
-  pgm.createTable("jobs", {
+  pgm.createTable("applications", {
     id: {
       type: "VARCHAR(50)",
       primaryKey: true,
     },
     company_id: {
       type: "VARCHAR(50)",
+      notNull: true,
       references: "companies",
       onDelete: "CASCADE",
     },
     category_id: {
       type: "VARCHAR(50)",
+      notNull: true,
       references: "categories",
       onDelete: "CASCADE",
     },
@@ -45,24 +47,10 @@ export const up = (pgm) => {
       type: "VARCHAR(50)",
       notNull: true,
     },
-    location_city: {
-      type: "VARCHAR(50)",
-      notNull: false,
-      default: "Unknown",
-    },
-    salary_min: {
-      type: "INTEGER",
-    },
-    salary_max: {
-      type: "INTEGER",
-    },
-    is_salary_visible: {
-      type: "BOOLEAN",
-      default: true,
-    },
     status: {
       type: "VARCHAR(20)",
-      default: "Open",
+      notNull: true,
+      default: "open",
     },
     created_at: {
       type: "TIMESTAMP",
@@ -83,5 +71,5 @@ export const up = (pgm) => {
  * @returns {Promise<void> | void}
  */
 export const down = (pgm) => {
-  pgm.dropTable("jobs");
+  pgm.dropTable("applications");
 };

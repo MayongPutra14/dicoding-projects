@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import companyRoutes from "./routes/companyRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js ";
 import jobRoutes from "./routes/jobRoutes.js";
+import applicationRoutes from "./routes/applicationRoutes.js";
 // const PORT = process.env.PORT || 3000;
 const PORT = 3000;
 const HOST = process.env.HOST;
@@ -18,6 +19,7 @@ app.use(authRoutes);
 app.use(companyRoutes);
 app.use(categoryRoutes);
 app.use(jobRoutes);
+app.use(applicationRoutes);
 app.use(errorHandler);
 
 app.get("/test-db", async (req, res) => {

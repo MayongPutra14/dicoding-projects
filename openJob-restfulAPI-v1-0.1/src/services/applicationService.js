@@ -3,8 +3,8 @@ import {
   addApplication,
   getAllApplications,
   getApplicationById,
-  getApplicationByUserId,
-  getApplicationByJobId,
+  getApplicationsByUserId,
+  getApplicationsByJobId,
   updateAppllication,
   deleteApplication,
 } from "./repositories/applicationRepositories.js";
@@ -41,12 +41,12 @@ export const handleGetApplicationById = async (applicationId) => {
 };
 
 export const handleGetApplicationsByUserId = async (userId) => {
-  const data = await getApplicationByUserId(userId);
+  const data = await getApplicationsByUserId(userId);
   return data;
 };
 
 export const handleGetApplicationsByJobId = async (jobId) => {
-  const data = await getApplicationByJobId(jobId);
+  const data = await getApplicationsByJobId(jobId);
   return data;
 };
 

@@ -37,7 +37,7 @@ export const getApplicationById = async (applicationId) => {
   return result.rows[0];
 };
 
-export const getApplicationByUserId = async (userId) => {
+export const getApplicationsByUserId = async (userId) => {
   const query = {
     text: `SELECT * FROM applications WHERE user_id = $1`,
     values: [userId],
@@ -47,7 +47,7 @@ export const getApplicationByUserId = async (userId) => {
   return result.rows;
 };
 
-export const getApplicationByJobId = async (jobId) => {
+export const getApplicationsByJobId = async (jobId) => {
   const query = {
     text: `SELECT * FROM applications WHERE job_id = $1`,
     values: [jobId],
@@ -56,8 +56,6 @@ export const getApplicationByJobId = async (jobId) => {
   const result = await pool.query(query);
   return result.rows;
 };
-
-
 
 export const updateAppllication = async (applicationId, applicationStatus) => {
   const keys = Object.keys(applicationStatus);

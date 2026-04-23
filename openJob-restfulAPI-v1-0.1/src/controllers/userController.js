@@ -1,4 +1,4 @@
-import { createUser } from "../services/userService.js";
+import { handleCreateUser } from "../services/userService.js";
 import {
   handleGetAllUsers,
   handleGetUserById,
@@ -6,7 +6,7 @@ import {
 
 export const registerUser = async (req, res, next) => {
   try {
-    const user = await createUser(req.body);
+    const user = await handleCreateUser(req.body);
 
     res.status(201).json({
       status: "success",

@@ -3,10 +3,20 @@ import pool from "../config/database.js";
 import bcrypt from "bcrypt";
 import jwt, { decode } from "jsonwebtoken";
 import { getUserByEmail } from "./repositories/userRepositories.js";
+import {
+  saveRefreshToken,
+  checkRefreshToken,
+  deleteRefreshToken,
+} from "./repositories/authRepositories.js";
 
 export const loginUser = async ({ email, password }) => {
-  const user = await getUserByEmail(email);
+  if (!email || !password) {
+    const error = new Error("Invalid Payload");
+    error.status = 400;
+    throw error;
+  }
 
+  const user = await getUserByEmail(email);
   if (!user) {
     const error = new Error("Invalid Credentials");
     error.status = 401;
@@ -14,7 +24,6 @@ export const loginUser = async ({ email, password }) => {
   }
 
   const isValid = await bcrypt.compare(password, user.password);
-
   if (!isValid) {
     const error = new Error("Invalid Credentials");
     error.status = 401;
@@ -22,7 +31,6 @@ export const loginUser = async ({ email, password }) => {
   }
 
   const payload = { id: user.id };
-
   const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY, {
     expiresIn: "3h",
   });
@@ -33,47 +41,40 @@ export const loginUser = async ({ email, password }) => {
   return { accessToken, refreshToken };
 };
 
-export const saveRefreshToken = async (token) => {
-  const id = nanoid(16);
-  const query = {
-    text: "INSERT INTO authentications (id, token) VALUES ($1, $2)",
-    values: [id, token],
-  };
-
-  await pool.query(query);
-};
-
 export const refreshAccessToken = async (refreshToken) => {
-  const query = {
-    text: "SELECT token FROM authentications WHERE refresh_token = $1",
-    values: [refreshToken],
-  };
+  const isTokenValid = await checkRefreshToken(refreshToken);
 
-  const result = await pool.query(query);
-
-  if (!result.rows.length) {
-    throw new Error("Invalid refresh token");
+  if (!isTokenValid) {
+    const error = new Error("Invalid refresh token");
+    error.status = 400;
+    throw error;
   }
 
-  const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
+  try {
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
 
-  const newAccessToken = jwt.sign(
-    {
-      id: decoded.id,
-    },
-    process.env.ACCESS_TOKEN_KEY,
-    {
-      expiresIn: "3h",
-    },
-  );
-  return newAccessToken;
+    const newAccessToken = jwt.sign(
+      { id: decoded.id },
+      process.env.ACCESS_TOKEN_KEY,
+      { expiresIn: "3h" },
+    );
+
+    return newAccessToken;
+  } catch (error) {
+    error.message = "Refresh token expired";
+    error.status = 401;
+    throw error;
+  }
 };
 
-export const deleteRefreshToken = async (token) => {
-  const query = {
-    text: "DELETE FROM authentications WHERE token = $1",
-    values: [token],
-  };
+export const logoutUser = async (refreshToken) => {
+  const isTokenValid = await checkRefreshToken(refreshToken);
 
-  await pool.query(query);
+  if (!isTokenValid) {
+    const error = new Error("Invalid refresh token");
+    error.status = 400;
+    throw error;
+  }
+
+  await deleteRefreshToken(refreshToken);
 };

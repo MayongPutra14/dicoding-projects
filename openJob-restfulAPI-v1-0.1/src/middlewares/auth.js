@@ -6,7 +6,7 @@ const authenticate = (req, res, next) => {
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(401).json({
       status: "failed",
-      message: "Unauthorized",
+      message: "Access token missing or invalid format",
     });
   }
 
@@ -17,9 +17,11 @@ const authenticate = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    const message = error.name === "TokenExpiredError" ? "Token expired" : "Invalid token";
+
     res.status(401).json({
       status: "failed",
-      message: "Unauthorized",
+      message: message,
     });
   }
 };

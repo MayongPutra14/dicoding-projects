@@ -29,7 +29,7 @@ export const up = (pgm) => {
     job_id: {
       type: "VARCHAR(50)",
       notNull: true,
-      references: "jobs", // Pastikan nama tabel lowongan kamu adalah 'jobs'
+      references: "jobs",
       onDelete: "CASCADE",
     },
   });

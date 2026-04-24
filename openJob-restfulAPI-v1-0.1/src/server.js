@@ -11,8 +11,7 @@ import applicationRoutes from "./routes/applicationRoutes.js";
 import bookmarkRoutes from "./routes/bookmarkRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 
-// const PORT = process.env.PORT || 3000;
-const PORT = 3000;
+const PORT = process.env.PORT ;
 const HOST = process.env.HOST;
 
 const app = express();

@@ -68,7 +68,11 @@ export const refreshAccessToken = async (refreshToken) => {
 };
 
 export const logoutUser = async (refreshToken) => {
+  console.log("REFRESH TOKEN:", refreshToken);
+
   const isTokenValid = await checkRefreshToken(refreshToken);
+
+  console.log("IS TOKEN VALID:", isTokenValid);
 
   if (!isTokenValid) {
     const error = new Error("Invalid refresh token");

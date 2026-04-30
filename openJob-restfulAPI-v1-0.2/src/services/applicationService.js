@@ -1,11 +1,13 @@
 import { nanoid } from "nanoid";
 import redis from "../config/redis.js";
+import { producerApplicationEvent } from "../messaging/produces.js";
 import {
   addApplication,
   getAllApplications,
   getApplicationById,
   getApplicationsByUserId,
   getApplicationsByJobId,
+  getApplicationByUserAndJob,
   updateAppllication,
   deleteApplication,
 } from "./repositories/applicationRepositories.js";
@@ -17,11 +19,26 @@ export const handleCreateApplication = async (payload) => {
     throw error;
   }
   const { user_id, job_id } = payload;
+
+  const existing = await getApplicationByUserAndJob(user_id, job_id);
+  if (existing) {
+    const error = new Error("Application already exists");
+    error.status = 400;
+    throw error;
+  }
+
   const id = nanoid(16);
   const newApplication = await addApplication({
     id,
     ...payload,
   });
+
+  await producerApplicationEvent({
+    id: newApplication.id,
+    userId: newApplication.user_id,
+    jobId: newApplication.job_id,
+  });
+
   await redis.del(`applications:user:${user_id}`);
   await redis.del(`applications:job:${job_id}`);
 
@@ -112,7 +129,7 @@ export const handleUpdateApplication = async (
     applicationId,
     applicationStatus,
   );
-  
+
   await redis.del(`application:${applicationId}`);
   await redis.del(`applications:user:${updatedApplication.user_id}`);
   await redis.del(`applications:job:${updatedApplication.job_id}`);

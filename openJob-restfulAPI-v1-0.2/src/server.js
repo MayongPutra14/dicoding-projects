@@ -10,8 +10,10 @@ import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import bookmarkRoutes from "./routes/bookmarkRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
+import { connectRabbitMQ } from "./config/rabbitmq.js";
+import { runApplicationConsumer } from "./messaging/consumer.js";
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 const HOST = process.env.HOST;
 
 const app = express();
@@ -24,7 +26,6 @@ app.use(jobRoutes);
 app.use(applicationRoutes);
 app.use(bookmarkRoutes);
 app.use(profileRoutes);
-app.use(errorHandler);
 
 app.get("/test-db", async (req, res) => {
   try {
@@ -45,6 +46,19 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://${HOST}:${PORT}`);
-});
+app.use(errorHandler);
+
+const start = async () => {
+  try {
+    await connectRabbitMQ();
+
+    app.listen(PORT, () => {
+      console.log(`Server is running at http://${HOST}:${PORT}`);
+    });
+    runApplicationConsumer();
+  } catch (error) {
+    console.error("Startup Error: ", error.message);
+  }
+};
+
+start();

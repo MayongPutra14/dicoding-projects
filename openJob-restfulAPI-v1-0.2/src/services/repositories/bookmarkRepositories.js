@@ -15,10 +15,31 @@ export const addBookmark = async (id, userId, jobId) => {
 
 export const getAllBookmarksByUserId = async (userId) => {
   const query = {
-    text: `SELECT * FROM bookmarks
-    WHERE user_id = $1 
-    ORDER BY created_at DESC
-    `,
+    text: `
+      SELECT 
+        bookmarks.id, 
+        bookmarks.user_id, 
+        bookmarks.job_id, 
+        bookmarks.created_at, 
+        bookmarks.updated_at,
+        jobs.category_id,
+        jobs.title,
+        jobs.description,
+        jobs.job_type,
+        jobs.experience_level,
+        jobs.location_type,
+        jobs.location_city,
+        jobs.salary_min,
+        jobs.salary_max,
+        jobs.is_salary_visible,
+        jobs.status AS job_status,
+        companies.name AS company_name,
+        companies.location AS company_location
+      FROM bookmarks
+      JOIN jobs ON bookmarks.job_id = jobs.id
+      JOIN companies ON jobs.company_id = companies.id
+      WHERE bookmarks.user_id = $1 
+      ORDER BY bookmarks.created_at DESC`,
     values: [userId],
   };
 

@@ -1,3 +1,4 @@
+import redis from "../config/redis.js";
 import {
   handleCreateApplication,
   handleGetAllApplications,
@@ -10,7 +11,10 @@ import {
 
 export const createApplication = async (req, res, next) => {
   try {
-    const applications = await handleCreateApplication(req.body);
+    const applications = await handleCreateApplication(req.body, req.user.id);
+
+    await redis.del(`applications:user:${req.user.id}`);
+    await redis.del(`applications:job:${req.body.job_id}`);
 
     res.status(201).json({
       status: "success",
@@ -28,7 +32,7 @@ export const getAllApplications = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       data: {
-        applications,
+        applications: applications.data,
       },
     });
   } catch (error) {
@@ -62,7 +66,7 @@ export const getApplicationsByUserId = async (req, res, next) => {
       status: "success",
       data: {
         applications: applications.data,
-      }
+      },
     });
   } catch (error) {
     next(error);
@@ -71,12 +75,14 @@ export const getApplicationsByUserId = async (req, res, next) => {
 
 export const getApplicationsByJobId = async (req, res, next) => {
   try {
-    const applications = await handleGetApplicationsByJobId(req.params.JobId);
+    const applications = await handleGetApplicationsByJobId(req.params.jobId);
     res.set("X-Data-Source", applications.source);
 
     res.status(200).json({
       status: "success",
-      data: applications.data,
+      data: {
+        applications: applications.data,
+      },
     });
   } catch (error) {
     next(error);

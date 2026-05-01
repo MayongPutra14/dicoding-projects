@@ -17,7 +17,10 @@ export const addCompany = async ({
 };
 
 export const getAllCompanies = async () => {
-  const result = await pool.query("SELECT * FROM companies");
+  const query = {
+    text: `SELECT id, name, location, description, created_at, updated_at FROM companies`,
+  };
+  const result = await pool.query(query);
   return result.rows;
 };
 

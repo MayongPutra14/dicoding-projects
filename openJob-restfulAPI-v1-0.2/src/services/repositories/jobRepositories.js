@@ -61,11 +61,23 @@ export const addJob = async (job) => {
 
 export const getAllJobs = async () => {
   const query = {
-    text: `SELECT jobs.*, companies.name AS company_name, categories.name AS category_name
-        FROM jobs
-        JOIN companies ON jobs.company_id = companies.id
-        JOIN categories ON jobs.category_id = categories.id
-        `,
+    text: `SELECT 
+        jobs.id, 
+        jobs.company_id, 
+        jobs.category_id, 
+        jobs.title, 
+        jobs.description, 
+        jobs.job_type, 
+        jobs.experience_level, 
+        jobs.location_type, 
+        jobs.location_city, 
+        jobs.salary_min, 
+        jobs.salary_max, 
+        jobs.is_salary_visible, 
+        jobs.status
+      FROM jobs
+      JOIN companies ON jobs.company_id = companies.id
+      JOIN categories ON jobs.category_id = categories.id`,
   };
 
   const result = await pool.query(query);

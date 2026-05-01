@@ -46,7 +46,12 @@ export const handleCreateApplication = async (payload) => {
 };
 
 export const handleGetAllApplications = async () => {
-  return await getAllApplications();
+  const data = (await getAllApplications()) || [];
+
+  return {
+    data,
+    source: "database",
+  };
 };
 
 export const handleGetApplicationById = async (applicationId) => {
@@ -146,5 +151,9 @@ export const handleDeleteApplication = async (applicationId) => {
     throw error;
   }
 
+  await redis.del(`application:${applicationId}`);
+  await redis.del(`applications:user:${deleted.user_id}`);
+  await redis.del(`applications:job:${deleted.job_id}`);
+  
   return deleted;
 };

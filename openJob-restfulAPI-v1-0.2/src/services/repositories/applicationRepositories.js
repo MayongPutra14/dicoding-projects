@@ -23,7 +23,36 @@ export const addApplication = async (application) => {
 };
 
 export const getAllApplications = async () => {
-  const result = await pool.query("SELECT * FROM applications");
+  const query = {
+    text: `
+      SELECT 
+      a.id,
+      a.status,
+      a.created_at,
+      a.updated_at,
+
+      u.id AS user_id,
+      u.name AS user_name,
+      u.email AS user_email,
+
+      j.id AS job_id,
+      j.title AS job_title,
+
+      c.id AS company_id,
+      c.name AS company_name,
+
+      cat.id AS category_id,
+      cat.name AS category_name
+
+    FROM applications a
+    JOIN users u ON a.user_id = u.id
+    JOIN jobs j ON a.job_id = j.id
+    JOIN companies c ON j.company_id = c.id
+    JOIN categories cat ON j.category_id = cat.id
+    `,
+  };
+
+  const result = await pool.query(query);
   return result.rows;
 };
 
@@ -39,7 +68,31 @@ export const getApplicationById = async (applicationId) => {
 
 export const getApplicationsByUserId = async (userId) => {
   const query = {
-    text: `SELECT * FROM applications WHERE user_id = $1`,
+    text: `
+    SELECT 
+        applications.id,
+        applications.status,
+        applications.created_at,
+        applications.updated_at,
+        applications.job_id,
+        applications.user_id,
+        jobs.title,
+        jobs.job_type,
+        jobs.location_type,
+        jobs.location_city,
+        jobs.salary_min,
+        jobs.salary_max,
+        jobs.is_salary_visible,
+        companies.name AS company_name,
+        categories.name AS category_name
+      FROM applications
+      JOIN jobs ON applications.job_id = jobs.id
+      JOIN companies ON jobs.company_id = companies.id
+      JOIN categories ON jobs.category_id = categories.id
+      WHERE applications.user_id = $1
+      ORDER BY applications.created_at DESC
+    
+    `,
     values: [userId],
   };
 

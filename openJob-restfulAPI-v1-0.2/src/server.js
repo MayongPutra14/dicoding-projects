@@ -10,6 +10,7 @@ import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import bookmarkRoutes from "./routes/bookmarkRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
+import documentRoutes from "./routes/documentRoutes.js";
 import { connectRabbitMQ } from "./config/rabbitmq.js";
 import { runApplicationConsumer } from "./messaging/consumer.js";
 
@@ -26,6 +27,7 @@ app.use(jobRoutes);
 app.use(applicationRoutes);
 app.use(bookmarkRoutes);
 app.use(profileRoutes);
+app.use(documentRoutes);
 
 app.get("/test-db", async (req, res) => {
   try {

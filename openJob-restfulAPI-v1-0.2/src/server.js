@@ -12,7 +12,6 @@ import bookmarkRoutes from "./routes/bookmarkRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 import documentRoutes from "./routes/documentRoutes.js";
 import { connectRabbitMQ } from "./config/rabbitmq.js";
-import { runApplicationConsumer } from "./messaging/consumer.js";
 
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
@@ -57,7 +56,6 @@ const start = async () => {
     app.listen(PORT, () => {
       console.log(`Server is running at http://${HOST}:${PORT}`);
     });
-    runApplicationConsumer();
   } catch (error) {
     console.error("Startup Error: ", error.message);
   }

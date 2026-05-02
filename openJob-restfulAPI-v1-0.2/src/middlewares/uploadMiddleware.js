@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, callback) => {
   if (!file.mimetype.includes("pdf")) {
-    return callback(new Error("Only PDF files are allowed"), false);
+    return callback(new Error("File is required"), false);
   }
   callback(null, true);
 };

@@ -8,7 +8,7 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  if (err.message === "Only PDF files are allowed") {
+  if (err.message === "File is required") {
     return res.status(400).json({
       status: "failed",
       message: err.message,

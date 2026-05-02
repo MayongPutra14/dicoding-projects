@@ -1,4 +1,5 @@
 import redis from "../config/redis.js";
+import { producerApplicationEvent } from "../messaging/producer.js";
 import {
   handleCreateApplication,
   handleGetAllApplications,
@@ -16,6 +17,9 @@ export const createApplication = async (req, res, next) => {
     await redis.del(`applications:user:${req.user.id}`);
     await redis.del(`applications:job:${req.body.job_id}`);
 
+    await producerApplicationEvent({
+      application_id: applications.id
+    })
     res.status(201).json({
       status: "success",
       data: applications,

@@ -10,7 +10,8 @@ import {
 
 export const createJob = async (req, res, next) => {
   try {
-    const result = await handleCreateJob(req.body);
+    const userId = req.user.id
+    const result = await handleCreateJob(req.body, userId);
 
     res.status(201).json({
       status: "success",

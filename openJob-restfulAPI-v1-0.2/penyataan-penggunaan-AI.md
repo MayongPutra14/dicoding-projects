@@ -10,15 +10,19 @@ Penggunaan ChatGPT dalam submission ini meliputi:
 - Memberikan gambaran mengenai alur kerja API yang akan dibangun.
 - Menjelaskan kode serta memberikan rekomendasi perbaikan agar lebih baik dan efisien.
 - Membantu dalam proses debugging serta penanganan error.
+- Membantu dalam proses pembuatan alur kerja Multer, Caching, dan RabbitMQ.
+- Membantu menyusu pernyataan penggunaan AI.
 
 ### Penggunaan Gemini
 
 Penggunaan Gemini dalam submission ini meliputi:
 
 - Membantu menjelaskan error yang muncul serta mendukung proses debugging.
-- Membantu membuat kode yang bersifat repetitif, seperti pembuatan schema menggunakan Joi dan pembuatan tabel pada file migrasi.
-- Menjelaskan perintah yang digunakan untuk melakukan query tertentu.
-- Menjelaskan relasi antar tabel dalam database.
+- Membantu dalam menejelaskan pesan error pada postman dan memberikan saran perbaikan.
+- Membantu dalam memahami bagaimana cara kerja RabbitMQ, Multer, Caching.
 - Memberikan panduan dalam melakukan perbaikan struktur tabel, seperti reset database atau pembaruan melalui penambahan file migrasi baru.
+- Membantu dalam peulisan query database yang panjang.
+- Membantu dalam melakukan konfigurasi pada mailtrap dan bagaimana cara menggunakannya di code. 
+- Membantu dalam proses perbaikan kode berdasarakan saran perbaikan oleh tim reviewer dicoding.
 
 Meskipun menggunakan bantuan AI, seluruh hasil pekerjaan tetap saya pelajari, pahami, dan sesuaikan dengan pemahaman saya sendiri. Saya bertanggung jawab penuh atas isi submission ini.

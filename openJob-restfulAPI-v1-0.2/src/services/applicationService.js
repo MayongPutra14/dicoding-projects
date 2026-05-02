@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import redis from "../config/redis.js";
-import { producerApplicationEvent } from "../messaging/produces.js";
+import { producerApplicationEvent } from "../messaging/producer.js";
 import {
   addApplication,
   getAllApplications,

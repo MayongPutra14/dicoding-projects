@@ -120,6 +120,28 @@ export const getApplicationByUserAndJob = async (userId, jobId) => {
   return result.rows[0];
 };
 
+export const getApplicationDetailForEmail = async (applicationId) => {
+  const query = {
+    text: `
+    SELECT 
+        applicant.name AS applicant_name, 
+        applicant.email AS applicant_email,
+        j.title AS job_title,
+        owner.email AS owner_email,
+        a.created_at
+      FROM applications a
+      JOIN users applicant ON a.user_id = applicant.id
+      JOIN jobs j ON a.job_id = j.id
+      JOIN users owner ON j.user_id = owner.id
+      WHERE a.id = $1
+    `,
+    values: [applicationId],
+  };
+
+  const result = await pool.query(query);
+  return result.rows[0];
+};
+
 export const updateAppllication = async (applicationId, applicationStatus) => {
   const keys = Object.keys(applicationStatus);
 

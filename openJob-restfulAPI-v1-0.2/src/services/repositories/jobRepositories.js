@@ -3,6 +3,7 @@ import pool from "../../config/database.js";
 export const addJob = async (job) => {
   const {
     id,
+    user_id,
     company_id,
     category_id,
     title,
@@ -21,6 +22,7 @@ export const addJob = async (job) => {
     text: `INSERT INTO jobs 
   (
     id,
+    user_id,
     company_id,
     category_id,
     title,
@@ -36,10 +38,11 @@ export const addJob = async (job) => {
     created_at,
     updated_at
   )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW(), NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, NOW(), NOW())
     RETURNING * `,
     values: [
       id,
+      user_id,
       company_id,
       category_id,
       title,

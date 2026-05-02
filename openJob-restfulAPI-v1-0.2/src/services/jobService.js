@@ -10,7 +10,7 @@ import {
   deleteJobById,
 } from "./repositories/jobRepositories.js";
 
-export const handleCreateJob = async (payload) => {
+export const handleCreateJob = async (payload, userId) => {
   if (!payload) {
     const error = new Error("Payload is required");
     error.status = 400;
@@ -20,6 +20,7 @@ export const handleCreateJob = async (payload) => {
   const id = nanoid(16);
   return await addJob({
     id,
+    user_id: userId,
     ...payload,
   });
 };
